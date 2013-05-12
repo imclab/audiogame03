@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+		<link rel="stylesheet" href="css/main.css">
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+		<script src="js/vendor/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/socket.io/socket.io.js"></script> 
+		<script>
+
+
+		jQuery(document).ready(function(){
+		var checkClick = 0;
+
+		console.log(checkClick);
+   				$("#special").click(function(e){
+   					checkClick =1;
+   					console.log(checkClick);
+		   		   $('#status2').html(e.pageX +', '+ e.pageY);
+		   		   	
+		   		   	var socket = io.connect('http://localhost:8080');
+            		socket.emit('shit', e.pageY); // os numeros são o equivalente a data que é enviada! shit é o canal que passa para o server do cliente!! 
+		  		 	socket.emit('shithorse', e.pageX);
+		  		 	socket.emit('horse', checkClick);
+		  		});
+		
+
+
+		});
+        </script> 
+
+	</head>
+	<body>
+
+
+<div style="width: 100%; height: 800px; background:#ccc;" id="special">
+<h2 id="status2">0, 0 </h2>
+</div>
+
+		
+
+		<script type="text/javascript">
+		// 	jQuery(document).ready(function(){
+  //  				$("#special").click(function(e){
+		//    		   $('#status2').html(e.pageX +', '+ e.pageY);
+		//   		 }); 
+		// 	})
+		
+  //           var socket = io.connect('http://localhost:8080');
+  //           socket.emit('userclicked', e.pageY); // os numeros é o equivalente a data que é enviada! shit é o canal que passa para o server do cliente!! 
+  //       </script>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>
